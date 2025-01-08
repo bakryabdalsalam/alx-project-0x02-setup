@@ -15,3 +15,14 @@ export interface CardProps {
     userId: number;
   }
   
+  export interface UserProps {
+    name: string;
+    email: string;
+    address: {
+      street: string;
+      suite: string;
+      city: string;
+      zipcode: string;
+    };
+  }
+  
