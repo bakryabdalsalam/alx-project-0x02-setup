@@ -9,3 +9,9 @@ export interface CardProps {
     label: string;
   }
   
+  export interface PostProps {
+    title: string;
+    content: string;
+    userId: number;
+  }
+  
