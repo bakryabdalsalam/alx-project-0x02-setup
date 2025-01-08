@@ -1,25 +1,11 @@
-import { useEffect, useState } from "react";
 import PostCard from "@/components/common/PostCard";
 import { PostProps } from "@/interfaces";
 
-export default function Posts() {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+interface PostsPageProps {
+  posts: PostProps[];
+}
 
-  useEffect(() => {
-    // Fetch posts from JSONPlaceholder API
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) =>
-        setPosts(
-          data.map((post: any) => ({
-            title: post.title,
-            content: post.body,
-            userId: post.userId,
-          }))
-        )
-      );
-  }, []);
-
+export default function Posts({ posts }: PostsPageProps) {
   return (
     <div>
       <h1>Posts</h1>
@@ -33,4 +19,22 @@ export default function Posts() {
       ))}
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await response.json();
+
+  // Map the API data to match the PostProps interface
+  const posts = data.map((post: any) => ({
+    title: post.title,
+    content: post.body,
+    userId: post.userId,
+  }));
+
+  return {
+    props: {
+      posts,
+    },
+  };
 }
