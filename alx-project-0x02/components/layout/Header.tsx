@@ -1,4 +1,10 @@
+import Link from "next/link";
+
 export default function Header() {
-    return <h1>alx Header</h1>;
-  }
-  
+  return (
+    <nav>
+      <Link href="/home">Home</Link>
+      <Link href="/about">About</Link>
+    </nav>
+  );
+}
