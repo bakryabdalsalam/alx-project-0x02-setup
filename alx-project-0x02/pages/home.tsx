@@ -1,5 +1,7 @@
 import { useState } from "react";
 import PostModal from "@/components/common/PostModal";
+import Header from "@/components/layout/Header";
+
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,6 +12,9 @@ export default function Home() {
   };
 
   return (
+    <>
+    <Header />
+    <main>
     <div>
       <h1>Home Page</h1>
       <button onClick={() => setIsModalOpen(true)}>Add New Post</button>
@@ -27,5 +32,7 @@ export default function Home() {
         ))}
       </div>
     </div>
+    </main>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import { ButtonProps } from "@/interfaces";
 
+
 export default function Button({ size, shape, label }: ButtonProps) {
   const sizeClasses = {
     small: "px-2 py-1 text-sm",
